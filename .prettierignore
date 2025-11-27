@@ -1,0 +1,10 @@
+node_modules
+node_modules_bak
+.next
+build
+dist
+out
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+README.md

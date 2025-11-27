@@ -1,0 +1,45 @@
+{
+  "name": "inventolite-fe",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3001",
+    "build": "next build",
+    "start": "next start -p 3001",
+    "lint": "eslint .",
+    "prepare": "husky install",
+    "format": "prettier --write .",
+    "postbuild": "next-sitemap",
+    "format-dev": "npm run format && npm run dev",
+    "clean-start": "npm run format && rm -rf .next && npm run build && npm run start"
+  },
+  "dependencies": {
+    "crypto-js": "^4.2.0",
+    "firebase": "^12.6.0",
+    "next": "16.0.4",
+    "next-sitemap": "^4.2.3",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "zod": "^4.1.13",
+    "zustand": "^5.0.8"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9.39.1",
+    "eslint-config-next": "16.0.4",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
+    "prettier": "^3.6.2",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix --max-warnings=0",
+      "prettier --write"
+    ]
+  }
+}
