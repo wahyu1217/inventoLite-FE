@@ -146,15 +146,14 @@ const manrope = Manrope({
 Pre-commit hook:
 
 - ESLint auto-fix  
-- Prettier formatting  
-- No warnings allowed (`--max-warnings=0`)  
+- Prettier formatting
 
 Configured via:
 
 ```json
 "lint-staged": {
   "*.{js,jsx,ts,tsx}": [
-    "eslint --fix --max-warnings=0",
+    "eslint --fix",
     "prettier --write"
   ]
 }
