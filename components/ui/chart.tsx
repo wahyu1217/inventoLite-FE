@@ -22,6 +22,23 @@ type ChartContextProps = {
   config: ChartConfig
 }
 
+type LegendPayloadItem = {
+  value?: string
+  id?: string
+  color?: string
+  dataKey?: string
+  type?: string
+  payload?: Record<string, any>
+}
+
+type ChartLegendContentProps = {
+  payload?: LegendPayloadItem[]
+  verticalAlign?: 'top' | 'bottom' | 'middle'
+  hideIcon?: boolean
+  nameKey?: string
+  className?: string
+}
+
 const ChartContext = React.createContext<ChartContextProps | null>(null)
 
 function useChart() {
@@ -112,6 +129,14 @@ function ChartTooltipContent({
   labelKey
 }: React.ComponentProps<typeof RechartsPrimitive.Tooltip> &
   React.ComponentProps<'div'> & {
+    payload?: {
+      name?: string
+      value?: number | string
+      dataKey?: string
+      color?: string
+      payload?: any
+    }[]
+    label?: string | number
     hideLabel?: boolean
     hideIndicator?: boolean
     indicator?: 'line' | 'dot' | 'dashed'
@@ -233,21 +258,15 @@ function ChartTooltipContent({
 const ChartLegend = RechartsPrimitive.Legend
 
 function ChartLegendContent({
-  className,
-  hideIcon = false,
   payload,
   verticalAlign = 'bottom',
-  nameKey
-}: React.ComponentProps<'div'> &
-  Pick<RechartsPrimitive.LegendProps, 'payload' | 'verticalAlign'> & {
-    hideIcon?: boolean
-    nameKey?: string
-  }) {
+  hideIcon = false,
+  nameKey,
+  className
+}: ChartLegendContentProps) {
   const { config } = useChart()
 
-  if (!payload?.length) {
-    return null
-  }
+  if (!payload?.length) return null
 
   return (
     <div

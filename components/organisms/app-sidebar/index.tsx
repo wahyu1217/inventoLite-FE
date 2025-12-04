@@ -11,12 +11,16 @@ import {
   IconFileWord,
   IconFolder,
   IconHelp,
-  IconInnerShadowTop,
-  IconListDetails,
+  IconHome,
   IconReport,
   IconSearch,
   IconSettings,
-  IconUsers
+  IconBuildingWarehouse,
+  IconUsersGroup,
+  IconBuildingFactory2,
+  IconCategory2,
+  IconRulerMeasure,
+  IconSitemap
 } from '@tabler/icons-react'
 
 import { NavDocuments } from '@/components/nav-documents'
@@ -40,30 +44,19 @@ const data = {
     avatar: '/avatars/shadcn.jpg'
   },
   navMain: [
+    { title: 'Dashboard', url: '/dashboard', icon: IconDashboard },
+    { title: 'Analytics', url: '/analytics', icon: IconChartBar },
     {
-      title: 'Dashboard',
-      url: '#',
-      icon: IconDashboard
-    },
-    {
-      title: 'Lifecycle',
-      url: '#',
-      icon: IconListDetails
-    },
-    {
-      title: 'Analytics',
-      url: '#',
-      icon: IconChartBar
-    },
-    {
-      title: 'Projects',
-      url: '#',
-      icon: IconFolder
-    },
-    {
-      title: 'Team',
-      url: '#',
-      icon: IconUsers
+      title: 'Master Data',
+      icon: IconFolder,
+      items: [
+        { title: 'Items', url: '/master/items', icon: IconSitemap },
+        { title: 'Categories', url: '/master/categories', icon: IconCategory2 },
+        { title: 'Units of Measure', url: '/master/uom', icon: IconRulerMeasure },
+        { title: 'Suppliers', url: '/master/suppliers', icon: IconBuildingFactory2 },
+        { title: 'Customers', url: '/master/customers', icon: IconUsersGroup },
+        { title: 'Warehouses', url: '/master/warehouses', icon: IconBuildingWarehouse }
+      ]
     }
   ],
   navClouds: [
@@ -158,8 +151,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <SidebarMenuItem>
             <SidebarMenuButton asChild className="data-[slot=sidebar-menu-button]:!p-1.5">
               <a href="#">
-                <IconInnerShadowTop className="!size-5" />
-                <span className="text-base font-semibold">Acme Inc.</span>
+                <IconHome className="!size-5" />
+                <span className="text-base font-semibold">
+                  Invento<span className="">Lite</span>
+                </span>
               </a>
             </SidebarMenuButton>
           </SidebarMenuItem>
