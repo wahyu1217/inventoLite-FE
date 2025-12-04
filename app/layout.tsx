@@ -1,6 +1,9 @@
 import type { Metadata } from 'next'
 import { Manrope } from 'next/font/google'
 import './globals.css'
+import { SiteHeader } from '@/components/site-header'
+import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar'
+import { AppSidebar } from '@/components/organisms/app-sidebar'
 
 const manrope = Manrope({
   variable: '--font-manrope',
