@@ -9,7 +9,7 @@ interface ThemeState {
   toggle: () => void
 }
 
-export function applyHtmlDarkClass(resolved: 'light' | 'dark') {
+function applyHtmlDarkClass(resolved: 'light' | 'dark') {
   if (typeof window === 'undefined') return
   document.documentElement.classList.toggle('dark', resolved === 'dark')
 }
