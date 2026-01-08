@@ -1,32 +1,9 @@
 'use client'
-
-import * as React from 'react'
-import {
-  IconCamera,
-  IconChartBar,
-  IconDashboard,
-  IconDatabase,
-  IconFileAi,
-  IconFileDescription,
-  IconFileWord,
-  IconFolder,
-  IconHelp,
-  IconHome,
-  IconReport,
-  IconSearch,
-  IconSettings,
-  IconBuildingWarehouse,
-  IconUsersGroup,
-  IconBuildingFactory2,
-  IconCategory2,
-  IconRulerMeasure,
-  IconSitemap
-} from '@tabler/icons-react'
-
-import { NavDocuments } from '@/components/nav-documents'
-import { NavMain } from '@/components/nav-main'
-import { NavSecondary } from '@/components/nav-secondary'
-import { NavUser } from '@/components/nav-user'
+import { ComponentProps } from 'react'
+import { IconHome } from '@tabler/icons-react'
+import { NavMain } from '@/components/organisms/nav-main'
+import { NavSecondary } from '@/components/organisms/nav-secondary'
+import { NavUser } from '@/components/organisms/nav-user'
 import {
   Sidebar,
   SidebarContent,
@@ -36,114 +13,10 @@ import {
   SidebarMenuButton,
   SidebarMenuItem
 } from '@/components/ui/sidebar'
+import { SIDEBAR_DATA } from '@/constans/sidebar'
 
-const data = {
-  user: {
-    name: 'shadcn',
-    email: 'm@example.com',
-    avatar: '/avatars/shadcn.jpg'
-  },
-  navMain: [
-    { title: 'Dashboard', url: '/dashboard', icon: IconDashboard },
-    { title: 'Analytics', url: '/analytics', icon: IconChartBar },
-    {
-      title: 'Master Data',
-      icon: IconFolder,
-      items: [
-        { title: 'Items', url: '/master/items', icon: IconSitemap },
-        { title: 'Categories', url: '/master/categories', icon: IconCategory2 },
-        { title: 'Units of Measure', url: '/master/uom', icon: IconRulerMeasure },
-        { title: 'Suppliers', url: '/master/suppliers', icon: IconBuildingFactory2 },
-        { title: 'Customers', url: '/master/customers', icon: IconUsersGroup },
-        { title: 'Warehouses', url: '/master/warehouses', icon: IconBuildingWarehouse }
-      ]
-    }
-  ],
-  navClouds: [
-    {
-      title: 'Capture',
-      icon: IconCamera,
-      isActive: true,
-      url: '#',
-      items: [
-        {
-          title: 'Active Proposals',
-          url: '#'
-        },
-        {
-          title: 'Archived',
-          url: '#'
-        }
-      ]
-    },
-    {
-      title: 'Proposal',
-      icon: IconFileDescription,
-      url: '#',
-      items: [
-        {
-          title: 'Active Proposals',
-          url: '#'
-        },
-        {
-          title: 'Archived',
-          url: '#'
-        }
-      ]
-    },
-    {
-      title: 'Prompts',
-      icon: IconFileAi,
-      url: '#',
-      items: [
-        {
-          title: 'Active Proposals',
-          url: '#'
-        },
-        {
-          title: 'Archived',
-          url: '#'
-        }
-      ]
-    }
-  ],
-  navSecondary: [
-    {
-      title: 'Settings',
-      url: '#',
-      icon: IconSettings
-    },
-    {
-      title: 'Get Help',
-      url: '#',
-      icon: IconHelp
-    },
-    {
-      title: 'Search',
-      url: '#',
-      icon: IconSearch
-    }
-  ],
-  documents: [
-    {
-      name: 'Data Library',
-      url: '#',
-      icon: IconDatabase
-    },
-    {
-      name: 'Reports',
-      url: '#',
-      icon: IconReport
-    },
-    {
-      name: 'Word Assistant',
-      url: '#',
-      icon: IconFileWord
-    }
-  ]
-}
-
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+export function AppSidebar({ ...props }: ComponentProps<typeof Sidebar>) {
+  const data = SIDEBAR_DATA
   return (
     <Sidebar collapsible="offcanvas" {...props}>
       <SidebarHeader>
@@ -153,7 +26,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               <a href="#">
                 <IconHome className="!size-5" />
                 <span className="text-base font-semibold">
-                  Invento<span className="">Lite</span>
+                  Invento<span className="text-primary dark:text-green-500">Lite</span>
                 </span>
               </a>
             </SidebarMenuButton>
@@ -162,7 +35,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
-        <NavDocuments items={data.documents} />
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>

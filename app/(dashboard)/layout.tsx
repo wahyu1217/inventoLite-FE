@@ -1,5 +1,5 @@
 import { AppSidebar } from '@/components/organisms/app-sidebar'
-import { SiteHeader } from '@/components/site-header'
+import { SiteHeader } from '@/components/organisms/site-header'
 import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar'
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
