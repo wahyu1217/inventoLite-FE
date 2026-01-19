@@ -4,7 +4,7 @@ export async function POST(req: Request) {
   try {
     const body = await req.json()
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_AUTH_URL}/login`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_AUTH_URL}/reset-password`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -15,19 +15,16 @@ export async function POST(req: Request) {
     const data = await res.json()
 
     if (!res.ok) {
-      return NextResponse.json({ message: data.message ?? 'Login gagal' }, { status: res.status })
+      return NextResponse.json(
+        {
+          message:
+            data.message ?? 'Jika email terdaftar, kami akan mengirimkan link untuk reset password'
+        },
+        { status: res.status }
+      )
     }
 
     const response = NextResponse.json(data)
-
-    response.cookies.set({
-      name: 'userToken',
-      value: data.access_token,
-      httpOnly: true,
-      maxAge: 60 * 60 * 12,
-      path: '/',
-      sameSite: 'lax'
-    })
 
     return response
   } catch (error) {
