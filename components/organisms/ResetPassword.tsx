@@ -133,6 +133,7 @@ export function ResetPasswordForm() {
           <div className="space-y-4">
             <div className="relative">
               <AuthField
+                placeholder="Masukkan password baru anda"
                 name="password"
                 label="Password baru"
                 type={showPassword ? 'text' : 'password'}
@@ -148,6 +149,7 @@ export function ResetPasswordForm() {
 
             <div className="relative">
               <AuthField
+                placeholder="Masukkan password kembali baru anda"
                 name="confirmPassword"
                 label="Konfirmasi password"
                 type={showConfirm ? 'text' : 'password'}

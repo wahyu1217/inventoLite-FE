@@ -48,7 +48,11 @@ export function LoginForm() {
       const res = await fetch('/api/auth/sign-in', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(values)
+        body: JSON.stringify({
+          email: values.email.toLowerCase(),
+          password: values.password,
+          remember: values.remember
+        })
       })
 
       const data = await res.json()
